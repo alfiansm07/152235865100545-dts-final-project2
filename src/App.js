@@ -1,26 +1,35 @@
 import React from "react";
 
 import useAxios, { configure } from "axios-hooks";
-
+import theme from "./utils/theme";
 import Axios from "axios";
 import Coba from "./containers/Coba";
-
-const axios = Axios.create({
+import Layout from "./components/Layout";
+import { CssBaseline, ThemeProvider, Typography } from "@mui/material";
+import "./App.css";
+import Login from "./containers/Login";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import Register from "./containers/Register";
+const axiosHooks = Axios.create({
   baseURL: "https://the-lazy-media-api.vercel.app/",
 });
 
-configure({ axios });
+configure({ axiosHooks });
 
 export default function App() {
   const [{ data, loading, error }, refetch] = useAxios();
 
   return (
     <div>
-      <button onClick={refetch}>refetch</button>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error!!!</p>}
-      {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
-      <Coba />
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <BrowserRouter>
+          <Routes>
+            <Route path="login" element={<Login />} />\
+            <Route path="register" element={<Register />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     </div>
   );
 }
