@@ -20,6 +20,7 @@ const base = createTheme({
     },
     h4: {
       fontFamily: ["IBM Plex Serif", "serif"].join(","),
+      fontWeight: 500,
     },
     button: {
       fontFamily: ["Mukta", "sans-serif"].join(","),
