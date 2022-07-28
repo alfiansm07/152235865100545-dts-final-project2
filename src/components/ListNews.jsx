@@ -1,4 +1,11 @@
-import { Alert, AlertTitle, Box, Container, Typography } from "@mui/material";
+import {
+  Alert,
+  AlertTitle,
+  Box,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import useAxios from "../hooks/useAxios";
 import CardNews from "./CardNews";
@@ -29,13 +36,30 @@ const ListNews = (props) => {
   }
 
   return (
-    <Box>
-      <Typography>{kategori}</Typography>
-      <Typography>{data[0].title}</Typography>
-      {data.map((data) => (
-        <CardNews key={data.key} data={data} />
-      ))}
-    </Box>
+    <Container maxWidth="xl">
+      <Typography variant="h3">{kategori}</Typography>
+      <Grid
+        container
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="flex-end"
+      >
+        <Grid item xs={9}>
+          {" "}
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "space-between",
+            }}
+          >
+            {data.map((data) => (
+              <CardNews key={data.key} data={data} />
+            ))}
+          </Box>
+        </Grid>{" "}
+      </Grid>
+    </Container>
   );
 };
 

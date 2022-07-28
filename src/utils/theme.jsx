@@ -8,7 +8,7 @@ const base = createTheme({
     secondary: {
       main: "#ffffff",
     },
-    divider: "rgba(255,255,255,0.12)",
+    divider: "black",
   },
   typography: {
     fontFamily: ["Mukta", "sans-serif"].join(","),
@@ -21,6 +21,10 @@ const base = createTheme({
     h4: {
       fontFamily: ["IBM Plex Serif", "serif"].join(","),
       fontWeight: 500,
+    },
+    h6: {
+      fontFamily: ["IBM Plex Serif", "serif"].join(","),
+      fontWeight: 600,
     },
     button: {
       fontFamily: ["Mukta", "sans-serif"].join(","),

@@ -8,7 +8,7 @@ const Home = () => {
     <div>
       <BannerTrending />
       <BreakingNews />
-      <ListNews url={"/api/tech?page=1"} kategori={"tech"} />
+      <ListNews url={"/api/tech?page=1"} kategori={"Teknologi "} />
     </div>
   );
 };
