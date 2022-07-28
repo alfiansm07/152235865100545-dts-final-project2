@@ -4,6 +4,7 @@ import React from "react";
 
 const CardNews = (props) => {
   const { author, desc, key, tag, thumb, time, title } = props.data;
+  console.log("props data ", props.data);
   return (
     <>
       <Card>
@@ -11,7 +12,7 @@ const CardNews = (props) => {
           <CardMedia
             component="img"
             height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
+            image={thumb}
             alt="green iguana"
           ></CardMedia>
         </CardActionArea>

@@ -13,6 +13,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import Loading from "./Loading";
 
 const BannerTrending = () => {
   const [{ data, loading, error }, refetch] = useAxios(
@@ -22,7 +23,7 @@ const BannerTrending = () => {
   // const { author, desc, key, tag, thumb, time, title } = data.results;
   // console.log("test ", data.results);
   if (loading) {
-    return <></>;
+    return <Loading />;
   }
 
   if (error) {
