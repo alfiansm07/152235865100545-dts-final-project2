@@ -19,7 +19,7 @@ const CardNews = (props) => {
         sx={{
           maxWidth: "438px",
           boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-          my: 2,
+          mb: 2,
         }}
       >
         <CardActionArea>

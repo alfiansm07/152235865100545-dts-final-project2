@@ -9,6 +9,8 @@ import {
 import React from "react";
 import useAxios from "../hooks/useAxios";
 import CardNews from "./CardNews";
+import CardNewsRight from "./CardNewsRight";
+import CardNews2Right from "./CardNewsRight";
 import Loading from "./Loading";
 
 const ListNews = (props) => {
@@ -37,12 +39,15 @@ const ListNews = (props) => {
 
   return (
     <Container maxWidth="xl">
-      <Typography variant="h3">{kategori}</Typography>
+      <Typography variant="h3" my={4}>
+        {kategori}
+      </Typography>
       <Grid
         container
         direction="row"
         justifyContent="flex-start"
-        alignItems="flex-end"
+        // alignItems="flex-end"
+        spacing={2}
       >
         <Grid item xs={9}>
           {" "}
@@ -57,7 +62,10 @@ const ListNews = (props) => {
               <CardNews key={data.key} data={data} />
             ))}
           </Box>
-        </Grid>{" "}
+        </Grid>
+        <Grid item xs={3}>
+          <CardNewsRight />
+        </Grid>
       </Grid>
     </Container>
   );

@@ -4,6 +4,7 @@ const base = createTheme({
     type: "light",
     primary: {
       main: "#C31815",
+      dark: "#1f1f20",
     },
     secondary: {
       main: "#ffffff",
