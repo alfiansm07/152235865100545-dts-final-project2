@@ -1,4 +1,4 @@
-import { Alert, AlertTitle, Box, Container } from "@mui/material";
+import { Alert, AlertTitle, Box, Container, Typography } from "@mui/material";
 import React from "react";
 import useAxios from "../hooks/useAxios";
 import CardNews from "./CardNews";
@@ -8,6 +8,7 @@ const ListNews = (props) => {
   const { url, kategori } = props;
 
   const [{ data, loading, error }, refetch] = useAxios({ url });
+
   if (loading) {
     return <Loading />;
   }
@@ -26,12 +27,16 @@ const ListNews = (props) => {
       </Container>
     );
   }
-  console.log("listnews", data);
+
   return (
     <Box>
-
-            <CardNews data={data} />;)
-  </Box>
+      <Typography>{kategori}</Typography>
+      <Typography>{data[0].title}</Typography>
+      {data.map((data) => (
+        <CardNews key={data.key} data={data} />
+      ))}
+    </Box>
+  );
 };
 
 export default ListNews;

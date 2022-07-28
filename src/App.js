@@ -19,15 +19,24 @@ import useAxios from "./hooks/useAxios";
 // configure({ axiosHooks });
 
 export default function App() {
-  const [{ data, loading, error }, refetch] = useAxios("/api/detail/2021/01/28/balan-wonderworld-preview");
-console.log("ini data di APP tanpa param ",data)
+  const [{ data, loading, error }, refetch] = useAxios(
+    "/api/detail/2021/01/28/balan-wonderworld-preview"
+  );
+  // console.log("ini data di APP tanpa param ",data)
   return (
     <div>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <BrowserRouter>
           <Routes>
-          <Route path="/" element={<Layout><Home /> </Layout>} />
+            <Route
+              path="/"
+              element={
+                <Layout>
+                  <Home />{" "}
+                </Layout>
+              }
+            />
 
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />

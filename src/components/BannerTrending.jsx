@@ -40,7 +40,7 @@ const BannerTrending = () => {
       </Container>
     );
   }
-  console.log(data.results);
+  // console.log(data.results);
   const { author, content, key, date, thumb, categories, title } = data.results;
 
   return (
