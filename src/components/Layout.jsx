@@ -7,7 +7,12 @@ const Layout = ({ children }) => {
   return (
     <>
       <Box
-        sx={{ flexDirection: "column", display: "flex", minHeight: "100vh" }}
+        sx={{
+          flexDirection: "column",
+          display: "flex",
+          minHeight: "100vh",
+          display: "realtive",
+        }}
       >
         <Navbar />
         {children}
