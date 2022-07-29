@@ -34,50 +34,54 @@ const NewsPage = () => {
   console.log("halaman newspge", data.results);
   return (
     <Box>
-      <Box sx={{ position: "relative", background: "black", height: "40vh" }}>
-        <Box>
-          <Container maxWidth="lg">
-            <Grid container>
-              <Grid item xs={12}>
-                <Typography
-                  py={6}
-                  align="center"
-                  variant="h2"
-                  color="secondary.main"
-                >
-                  {title}
-                </Typography>
-                <Card>
-                  <CardMedia
-                    component="img"
-                    height="420"
-                    image={figure[0]}
-                    alt={title}
-                  />
-                </Card>
-              </Grid>
-              <Grid container>
-                <Grid item xs={8}>
-                  <Stack direction="row" alignItems="center">
-                    <Typography variant="subtitle2">
-                      by {author} | {date}{" "}
-                    </Typography>
-                  </Stack>
-                  <Stack>
-                    {content.map((desc) => {
-                      return (
-                        <Typography variant="body1" color="initial">
-                          {desc}
-                        </Typography>
-                      );
-                    })}
-                  </Stack>
-                </Grid>
-                <Grid item xs={4}></Grid>
-              </Grid>
+      <Box sx={{ background: "black", height: "40vh" }}></Box>
+      <Box
+        sx={{
+          position: "relative",
+          marginTop: "-400px",
+        }}
+      >
+        <Container maxWidth="lg">
+          <Grid container>
+            <Grid item xs={12}>
+              <Typography
+                py={6}
+                align="center"
+                variant="h2"
+                color="secondary.main"
+              >
+                {title}
+              </Typography>
+              <Card>
+                <CardMedia
+                  component="img"
+                  height="420"
+                  image={figure[0]}
+                  alt={title}
+                />
+              </Card>
             </Grid>
-          </Container>
-        </Box>
+            <Grid container>
+              <Grid item xs={8}>
+                <Stack direction="row" alignItems="center">
+                  <Typography variant="subtitle2">
+                    by {author} | {date}{" "}
+                  </Typography>
+                </Stack>
+                <Stack>
+                  {content.map((desc) => {
+                    return (
+                      <Typography variant="body1" color="initial">
+                        {desc}
+                      </Typography>
+                    );
+                  })}
+                </Stack>
+              </Grid>
+              <Grid item xs={4}></Grid>
+            </Grid>
+          </Grid>
+        </Container>
       </Box>
     </Box>
   );

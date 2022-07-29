@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
           flexDirection: "column",
           display: "flex",
           minHeight: "100vh",
-          display: "realtive",
+          // display: "realtive",
         }}
       >
         <Navbar />

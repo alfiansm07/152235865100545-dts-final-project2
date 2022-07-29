@@ -13,6 +13,7 @@ import Register from "./containers/Register";
 import Home from "./containers/Home";
 import useAxios from "./hooks/useAxios";
 import NewsPage from "./containers/NewsPage";
+import NotFound from "./containers/NotFound";
 // const axiosHooks = Axios.create({
 //   baseURL: "https://the-lazy-media-api.vercel.app/",
 // });
@@ -48,6 +49,7 @@ export default function App() {
             />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
