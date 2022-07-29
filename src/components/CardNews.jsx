@@ -9,10 +9,18 @@ import {
 } from "@mui/material";
 import useAxios from "axios-hooks";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const CardNews = (props) => {
+  const navigate = useNavigate();
+
   const { author, desc, key, tag, thumb, time, title } = props.data;
+  // const keynew = key.replace("/", "-");
   console.log("props data ", props);
+  const handleOnClickCard = () => {
+    console.log("ini key ", key);
+    navigate(`/detail/${key}`, { replace: true });
+  };
   return (
     <>
       <Card
@@ -22,7 +30,7 @@ const CardNews = (props) => {
           mb: 2,
         }}
       >
-        <CardActionArea>
+        <CardActionArea onClick={() => handleOnClickCard()}>
           <CardMedia
             component="img"
             height="210px"

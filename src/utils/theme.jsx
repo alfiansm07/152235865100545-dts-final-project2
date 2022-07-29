@@ -18,6 +18,7 @@ const base = createTheme({
     },
     h2: {
       fontFamily: "IBM Plex Serif",
+      fontWeight: 500,
     },
     h4: {
       fontFamily: ["IBM Plex Serif", "serif"].join(","),

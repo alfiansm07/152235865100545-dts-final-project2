@@ -38,7 +38,7 @@ const ListNews = (props) => {
   }
 
   return (
-    <Container maxWidth="xl">
+    <>
       <Typography variant="h3" my={4}>
         {kategori}
       </Typography>
@@ -46,28 +46,25 @@ const ListNews = (props) => {
         container
         direction="row"
         justifyContent="flex-start"
-        // alignItems="flex-end"
+        alignItems="flex-end"
         spacing={2}
       >
-        <Grid item xs={9}>
-          {" "}
+        <Grid item>
           <Box
+            mr={5}
             sx={{
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "space-between",
             }}
           >
-            {data.map((data) => (
+            {data.slice(0, 4).map((data) => (
               <CardNews key={data.key} data={data} />
             ))}
           </Box>
         </Grid>
-        <Grid item xs={3}>
-          <CardNewsRight />
-        </Grid>
       </Grid>
-    </Container>
+    </>
   );
 };
 

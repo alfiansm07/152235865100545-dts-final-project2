@@ -12,6 +12,7 @@ import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Register from "./containers/Register";
 import Home from "./containers/Home";
 import useAxios from "./hooks/useAxios";
+import NewsPage from "./containers/NewsPage";
 // const axiosHooks = Axios.create({
 //   baseURL: "https://the-lazy-media-api.vercel.app/",
 // });
@@ -37,7 +38,14 @@ export default function App() {
                 </Layout>
               }
             />
-
+            <Route
+              path="/detail/:tahun/:bulan/:tanggal/:judul"
+              element={
+                <Layout>
+                  <NewsPage />
+                </Layout>
+              }
+            />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
           </Routes>
