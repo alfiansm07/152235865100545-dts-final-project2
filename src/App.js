@@ -16,17 +16,8 @@ import NewsPage from "./containers/NewsPage";
 import NotFound from "./containers/NotFound";
 import ProtectedComponent from "./components/ProtectedComponent";
 import SearchPage from "./containers/SearchPage";
-// const axiosHooks = Axios.create({
-//   baseURL: "https://the-lazy-media-api.vercel.app/",
-// });
-
-// configure({ axiosHooks });
 
 export default function App() {
-  const [{ data, loading, error }, refetch] = useAxios(
-    "/api/detail/2021/01/28/balan-wonderworld-preview"
-  );
-  // console.log("ini data di APP tanpa param ",data)
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -52,8 +43,22 @@ export default function App() {
               }
             />
             <Route path="login" element={<Login />} />
-            <Route path="search/:query" element={<SearchPage />} />
-            <Route path="search" element={<SearchPage />} />
+            <Route
+              path="search/:query"
+              element={
+                <Layout>
+                  <SearchPage />
+                </Layout>
+              }
+            />
+            <Route
+              path="search"
+              element={
+                <Layout>
+                  <SearchPage />
+                </Layout>
+              }
+            />
 
             <Route path="register" element={<Register />} />
             <Route path="*" element={<NotFound />} />
