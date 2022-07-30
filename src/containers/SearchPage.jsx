@@ -1,32 +1,42 @@
-import { Alert, AlertTitle, Box, Grid } from "@mui/material";
+import {
+  Alert,
+  AlertTitle,
+  Box,
+  Button,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { Container } from "@mui/system";
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import CardNews from "../components/CardNews";
 import Loading from "../components/Loading";
 import useAxios from "../hooks/useAxios";
 
 const SearchPage = () => {
   let { query } = useParams();
+  const [url, setUrl] = useState(query);
+  const urlRef = useRef();
+  const [errorHandling, setErrorHandling] = useState();
+
   const navigate = useNavigate();
-  const [query, setQuery] = useState("");
-  const [error, setError] = useState();
   const handleChange = (event) => {
-    setQuery(event.target.value);
-    console.log(query);
+    setUrl(event.target.value);
   };
+  const [{ data, loading, error }, refetch] = useAxios(
+    `/api/search?search=${url}`,
+    { manual: !url }
+  );
   const handleSubmit = (event) => {
     event.preventDefault();
+    setUrl(urlRef.current.value);
+    console.log("ini rul ", url);
     if (query === "") {
-      setError("masukan kata kunci,tidak boleh kosong.");
-    } else {
-      navigate(`/search/${query}`);
+      setErrorHandling("masukan kata kunci,tidak boleh kosong.");
     }
   };
 
-  const [{ data, loading, error }, refetch] = useAxios(
-    `/api/search?search=${query}`
-  );
   if (loading) {
     return <Loading />;
   }
@@ -46,7 +56,7 @@ const SearchPage = () => {
     );
   }
 
-  console.log("ini data dari search page", data);
+  // console.log("ini data dari search page", data);
   return (
     <>
       <Container maxWidth="xl">
@@ -65,7 +75,7 @@ const SearchPage = () => {
             <TextField
               id="outlined-name"
               label="Name"
-              onChange={handleChange}
+              inputRef={urlRef}
               placeholder="Masukan Kata Kunci"
               sx={{ display: "flex ", marginY: "20px" }}
             />
