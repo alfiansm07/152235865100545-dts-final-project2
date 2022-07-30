@@ -1,30 +1,57 @@
-import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import Grid from "@mui/material/Grid";
+import Link from "@mui/material/Link";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import * as React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-
+import { auth } from "../config/firebase";
+import Loading from "../components/Loading";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { Alert } from "@mui/material";
 export default function Login() {
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
+  const [errorHandling, setErrorHandling] = React.useState("");
+
+  const [user, isLoading] = useAuthState(auth);
+
+  React.useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
+    const email = data.get("email");
+    const password = data.get("password");
 
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("berhasil");
+    } catch (err) {
+      setErrorHandling(err.message);
+
+      console.log(err);
+      console.log("error code auth", err.code);
+      console.log("error message auth", err.message);
+    }
+  };
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -73,6 +100,13 @@ export default function Login() {
             Sign In
           </Button>
           <Grid container>
+            {errorHandling && (
+              <Grid item>
+                <Alert variant="outlined" severity="error">
+                  {errorHandling}
+                </Alert>
+              </Grid>
+            )}
             <Grid item>
               <Link
                 onClick={() => {

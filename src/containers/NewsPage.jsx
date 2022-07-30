@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import { Box, Container } from "@mui/system";
 import { Alert, AlertTitle, Card, CardMedia, Grid, Stack } from "@mui/material";
 import Loading from "../components/Loading";
+import CardNewsRight from "../components/CardNewsRight";
 const NewsPage = () => {
   const navigate = useNavigate();
   let { tahun, bulan, tanggal, judul } = useParams();
@@ -61,7 +62,7 @@ const NewsPage = () => {
                 />
               </Card>
             </Grid>
-            <Grid container>
+            <Grid container spacing={2}>
               <Grid item xs={8}>
                 <Stack direction="row" alignItems="center">
                   <Typography variant="subtitle2">
@@ -78,7 +79,9 @@ const NewsPage = () => {
                   })}
                 </Stack>
               </Grid>
-              <Grid item xs={4}></Grid>
+              <Grid item xs={4} mt={4}>
+                <CardNewsRight />
+              </Grid>
             </Grid>
           </Grid>
         </Container>

@@ -14,6 +14,8 @@ import Home from "./containers/Home";
 import useAxios from "./hooks/useAxios";
 import NewsPage from "./containers/NewsPage";
 import NotFound from "./containers/NotFound";
+import ProtectedComponent from "./components/ProtectedComponent";
+import SearchPage from "./containers/SearchPage";
 // const axiosHooks = Axios.create({
 //   baseURL: "https://the-lazy-media-api.vercel.app/",
 // });
@@ -42,12 +44,16 @@ export default function App() {
             <Route
               path="/detail/:tahun/:bulan/:tanggal/:judul"
               element={
-                <Layout>
-                  <NewsPage />
-                </Layout>
+                <ProtectedComponent>
+                  <Layout>
+                    <NewsPage />
+                  </Layout>
+                </ProtectedComponent>
               }
             />
             <Route path="login" element={<Login />} />
+            <Route path="search" element={<SearchPage />} />
+
             <Route path="register" element={<Register />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

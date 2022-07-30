@@ -4,6 +4,7 @@ import React from "react";
 import BannerTrending from "../components/BannerTrending";
 import BreakingNews from "../components/BreakingNews";
 import CardNewsRight from "../components/CardNewsRight";
+import CariBerita from "../components/CariBerita";
 import ListNews from "../components/ListNews";
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
           </Grid>
           <Grid item xs={3}>
             <CardNewsRight />
+            <CariBerita />
           </Grid>
         </Grid>
       </Container>
