@@ -52,6 +52,7 @@ export default function App() {
               }
             />
             <Route path="login" element={<Login />} />
+            <Route path="search/:query" element={<SearchPage />} />
             <Route path="search" element={<SearchPage />} />
 
             <Route path="register" element={<Register />} />

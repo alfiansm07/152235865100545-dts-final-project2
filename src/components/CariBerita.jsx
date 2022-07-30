@@ -1,4 +1,5 @@
 import {
+  Alert,
   Box,
   Button,
   Container,
@@ -6,9 +7,25 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CariBerita = () => {
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+  const [error, setError] = useState();
+  const handleChange = (event) => {
+    setQuery(event.target.value);
+    console.log(query);
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (query === "") {
+      setError("masukan kata kunci,tidak boleh kosong.");
+    } else {
+      navigate(`/search/${query}`);
+    }
+  };
   return (
     <div>
       {" "}
@@ -23,17 +40,37 @@ const CariBerita = () => {
             alignItems="flex-start"
             spacing={1}
           >
-            <Typography variant="subtitle2" color="initial">
-              Masukan Kata Kunci Berita yang Ingin Dicari
-            </Typography>
+            <Box
+              component="form"
+              noValidate
+              autoComplete="off"
+              onSubmit={handleSubmit}
+            >
+              <Typography variant="subtitle2" color="initial">
+                Masukan Kata Kunci Berita yang Ingin Dicari
+              </Typography>
 
-            <TextField
-              id="outlined-textarea"
-              placeholder="Masukan Kata Kunci"
-            />
-            <Button variant="contained" color="primary">
-              Cari
-            </Button>
+              <TextField
+                id="outlined-name"
+                label="Name"
+                onChange={handleChange}
+                placeholder="Masukan Kata Kunci"
+                sx={{ display: "flex ", marginY: "20px" }}
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                fullWidth
+              >
+                Cari
+              </Button>
+              {error && (
+                <Alert variant="outlined" severity="error">
+                  {error}
+                </Alert>
+              )}
+            </Box>
           </Stack>
         </Box>
       </Container>
