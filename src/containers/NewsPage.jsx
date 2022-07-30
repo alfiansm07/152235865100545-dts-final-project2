@@ -39,7 +39,7 @@ const NewsPage = () => {
       <Box
         sx={{
           position: "relative",
-          marginTop: "-400px",
+          marginTop: "-40vh",
         }}
       >
         <Container maxWidth="lg">
