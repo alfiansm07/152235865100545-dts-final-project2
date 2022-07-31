@@ -20,8 +20,6 @@ const BannerTrending = () => {
     "api/detail/2021/01/28/balan-wonderworld-preview"
   );
 
-  // const { author, desc, key, tag, thumb, time, title } = data.results;
-  // console.log("test ", data.results);
   if (loading) {
     return <Loading />;
   }
@@ -47,7 +45,7 @@ const BannerTrending = () => {
     <Container maxWidth="xl" sx={{ paddingY: 5 }}>
       <Grid
         container
-        direction="row"
+        direction={{ xs: "column-reverse", sm: "row", md: "row" }}
         justifyContent="flex-start"
         alignItems="center"
         maxWidth="xl"
@@ -57,7 +55,7 @@ const BannerTrending = () => {
           <Card>
             <CardMedia
               component="img"
-              sx={{ width: 750 }}
+              sx={{ width: "100%" }}
               image={thumb}
               alt="Live from space album cover"
             />

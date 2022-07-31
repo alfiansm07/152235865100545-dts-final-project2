@@ -15,8 +15,7 @@ const CardNews = (props) => {
   const navigate = useNavigate();
 
   const { author, desc, key, tag, thumb, time, title } = props.data;
-  // const keynew = key.replace("/", "-");
-  // console.log("props data ", props);
+
   const handleOnClickCard = () => {
     console.log("ini key ", key);
     navigate(`/detail/${key}`, { replace: true });

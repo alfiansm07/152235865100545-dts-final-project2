@@ -14,11 +14,11 @@ const Home = () => {
       <BreakingNews />
       <Container maxWidth="xl">
         <Grid container>
-          <Grid item xs={9}>
+          <Grid item xs={12} sm={9}>
             <ListNews url={"/api/tech?page=1"} kategori={"Teknologi "} />
             <ListNews url={"/api/games/news/?page=1"} kategori={"Games "} />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={3}>
             <CardNewsRight />
             <CariBerita />
           </Grid>

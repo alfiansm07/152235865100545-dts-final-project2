@@ -18,7 +18,12 @@ import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = [
+  { title: "Home", url: "/" },
+  { title: "Search", url: "/search" },
+  { title: "Kosong", url: "/a" },
+];
+
 const settings = ["Profile", "Account", "Dashboard"];
 
 const ResponsiveAppBar = () => {
@@ -59,7 +64,6 @@ const ResponsiveAppBar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -102,14 +106,21 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem
+                  key={page.title}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    navigate(page.url);
+                  }}
+                >
+                  <Typography textAlign="center">{page.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
 
           <Typography
+            onClick={() => navigate("/")}
             variant="h5"
             noWrap
             component="a"
@@ -120,7 +131,7 @@ const ResponsiveAppBar = () => {
               flexGrow: 1,
 
               fontWeight: 700,
-              letterSpacing: ".3rem",
+
               color: "inherit",
               textDecoration: "none",
             }}
@@ -130,8 +141,11 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.title}
+                onClick={() => {
+                  handleCloseNavMenu();
+                  navigate(page.url);
+                }}
                 sx={{
                   my: 2,
                   color: "black",
@@ -139,7 +153,7 @@ const ResponsiveAppBar = () => {
                   textTransform: "none",
                 }}
               >
-                {page}
+                {page.title}
               </Button>
             ))}
           </Box>

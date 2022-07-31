@@ -52,7 +52,11 @@ const BreakingNews = () => {
         >
           BREAKIGN NEWS
         </Button>
-        <Typography variant="h5" color="secondary.main">
+        <Typography
+          variant="h5"
+          color="secondary.main"
+          mt={{ xs: "10px", sm: "0" }}
+        >
           {title}
         </Typography>
       </Grid>
