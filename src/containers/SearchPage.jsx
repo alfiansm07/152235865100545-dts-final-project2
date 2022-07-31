@@ -19,12 +19,12 @@ import useAxios from "../hooks/useAxios";
 const SearchPage = () => {
   let { query } = useParams();
   const navigate = useNavigate();
-  const [input, setInput] = useState();
+  const [input, setInput] = useState("");
   const [result, setResult] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   const handleSubmit = (event) => {
-    if (input === "" || undefined) {
+    if (input === "") {
       event.preventDefault();
       setError("masukan kata kunci");
     } else {
@@ -37,7 +37,7 @@ const SearchPage = () => {
     setError("");
     const fetchData = async () => {
       console.log("ini fechdata", query);
-      if (query === undefined) {
+      if (query === undefined || "") {
         setIsLoading(false);
         navigate("/search");
         return (
