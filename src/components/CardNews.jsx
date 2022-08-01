@@ -24,7 +24,7 @@ const CardNews = (props) => {
     <>
       <Card
         sx={{
-          maxWidth: "438px",
+          maxWidth: "420px",
           boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
           mb: 2,
         }}

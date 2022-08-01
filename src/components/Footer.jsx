@@ -9,7 +9,7 @@ const Footer = () => {
       <Box>
         <Stack direction="row" justifyContent="center" alignItems="center">
           <Typography variant="body1" color="initial">
-            Build With Love @Muhammad Alfian Syah
+            Build With ❤️ @Muhammad Alfian Syah
           </Typography>
         </Stack>
       </Box>

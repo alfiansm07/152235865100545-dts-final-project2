@@ -17,8 +17,11 @@ import React from "react";
 import useAxios from "../hooks/useAxios";
 import CariBerita from "./CariBerita";
 import Loading from "./Loading";
+import { useNavigate } from "react-router-dom";
 
 const CardNewsRight = () => {
+  const navigate = useNavigate();
+
   const [{ data, loading, error }, refetch] = useAxios(
     "/api/tech/recommend?page=1"
   );
@@ -41,8 +44,15 @@ const CardNewsRight = () => {
       </Container>
     );
   }
-  const { author, content, key, date, thumb, categories, title } = data[0];
 
+  const randomIndex = Math.floor(Math.random() * 11);
+  console.log("ramdom", randomIndex);
+  const { author, content, key, date, thumb, categories, title } =
+    data[randomIndex];
+  const handleOnClickCard = () => {
+    console.log("ini key ", key);
+    navigate(`/detail/${key}`, { replace: true });
+  };
   return (
     <>
       <Typography variant="h5" color="initial">
@@ -55,7 +65,7 @@ const CardNewsRight = () => {
           mb: 2,
         }}
       >
-        <CardActionArea>
+        <CardActionArea onClick={() => handleOnClickCard()}>
           <CardMedia
             component="img"
             height="210px"

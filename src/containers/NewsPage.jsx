@@ -63,23 +63,36 @@ const NewsPage = () => {
               </Card>
             </Grid>
             <Grid container spacing={2}>
-              <Grid item xs={8}>
-                <Stack direction="row" alignItems="center">
+              <Grid item xs={12} sm={8}>
+                <Stack direction="row" alignItems="center" my={3}>
                   <Typography variant="subtitle2">
                     by {author} | {date}{" "}
                   </Typography>
                 </Stack>
                 <Stack>
                   {content.map((desc) => {
-                    return (
-                      <Typography variant="body1" color="initial">
-                        {desc}
-                      </Typography>
-                    );
+                    if (desc.startsWith("https://")) {
+                      return (
+                        <Card>
+                          <CardMedia
+                            component="img"
+                            height="100%"
+                            image={desc}
+                            alt={desc}
+                          />
+                        </Card>
+                      );
+                    } else {
+                      return (
+                        <Typography variant="body1" color="initial">
+                          {desc}
+                        </Typography>
+                      );
+                    }
                   })}
                 </Stack>
               </Grid>
-              <Grid item xs={4} mt={4}>
+              <Grid item xs={12} sm={4} mt={4}>
                 <CardNewsRight />
               </Grid>
             </Grid>

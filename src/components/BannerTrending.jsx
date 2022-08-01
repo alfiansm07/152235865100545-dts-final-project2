@@ -7,6 +7,7 @@ import {
   AlertTitle,
   Box,
   Card,
+  CardActionArea,
   CardContent,
   CardMedia,
   Grid,
@@ -14,11 +15,17 @@ import {
   Typography,
 } from "@mui/material";
 import Loading from "./Loading";
+import { useNavigate } from "react-router-dom";
 
 const BannerTrending = () => {
-  const [{ data, loading, error }, refetch] = useAxios(
-    "api/detail/2021/01/28/balan-wonderworld-preview"
-  );
+  const navigate = useNavigate();
+  const bannerURL = "api/detail/2021/01/28/balan-wonderworld-preview";
+  const [{ data, loading, error }, refetch] = useAxios(bannerURL);
+
+  const handleOnClickCard = () => {
+    console.log("ini key ", bannerURL);
+    navigate(`/detail/2021/01/28/balan-wonderworld-preview`, { replace: true });
+  };
 
   if (loading) {
     return <Loading />;
@@ -70,7 +77,9 @@ const BannerTrending = () => {
                 </Typography>
               </Stack>
               <Stack mb={3}>
-                <Typography variant="h4">{title}</Typography>
+                <CardActionArea onClick={() => handleOnClickCard()}>
+                  <Typography variant="h4">{title}</Typography>
+                </CardActionArea>
               </Stack>
               <Stack mb={3}>
                 <Typography
